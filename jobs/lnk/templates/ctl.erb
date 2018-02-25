@@ -1,37 +1,8 @@
 #!/bin/bash
 
-set -e
+<% lnkers = link('lnkers') %>
 
-export LNKCFGDIR=/var/vcap/jobs/lnk/config
-export LNK_LOG_DIR=/var/vcap/sys/log/lnk
-
-export LOG_DIR=/var/vcap/sys/log/lnk
-export RUN_DIR=/var/vcap/sys/run/lnk
-export PIDFILE=/var/vcap/sys/run/lnk/pid
-export TMPDIR=/var/vcap/data/lnk/tmp
-
-
-case $1 in
-
-  start)
-    mkdir -p $LOG_DIR $RUN_DIR
-    chown -R vcap:vcap $LOG_DIR $RUN_DIR
-
-    echo $$ > $PIDFILE
-    ;;
-
-  stop)
-    if [ -f $PIDFILE ]; then
-      kill -9 `cat $PIDFILE` || true
-      rm -f $PIDFILE
-    fi
-    ;;
-
-  *)
-    echo "Usage: $0 {start|stop}"
-    exit 1
-    ;;
-
-esac
-exit 0
+<% lnkers.instances.each do |instance| %>
+echo <%= instance.index+1 %>=<%= instance.address %>:<%= lnkers.p('material') %>
+<% end %>
 
