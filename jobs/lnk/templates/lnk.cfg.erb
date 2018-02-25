@@ -1,0 +1,6 @@
+<% lnkers = link('lnkers') %>
+
+<% lnkers.instances.each do |instance| %>
+lnker.<%= instance.index+1 %>=<%= instance.address %>:<%= peers.p('leader_election_port') %>
+<% end %>
+

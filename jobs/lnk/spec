@@ -1,0 +1,30 @@
+---
+name: lnk
+
+packages:
+- lnk
+
+consumes:
+- name: lnkers
+  type: lnker
+
+provides:
+- name: lnkers
+  type: lnker
+  properties:
+  - material
+  - color
+
+templates:
+  ctl.erb: bin/ctl
+  pre-start.erb: bin/pre-start
+  lnk.cfg.erb: config/lnk.cfg
+
+properties:
+  material:
+    description: "Material the link is made of."
+    default: "Steel"
+
+  color:
+    description: "Color of the link."
+    default: "Pink"

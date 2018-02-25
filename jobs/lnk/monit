@@ -1,0 +1,6 @@
+check process lnk
+  with pidfile /var/vcap/sys/run/lnk/pid
+  start program "/var/vcap/jobs/lnk/bin/ctl start"
+  stop program "/var/vcap/jobs/lnk/bin/ctl stop"
+  group vcap
+
