@@ -1,21 +1,32 @@
 #!/bin/bash
 
-function main() {
-  local log_dir
-  log_dir="/var/vcap/sys/log/lnk"
+export LOG_DIR=/var/vcap/sys/log/lnk
+export RUN_DIR=/var/vcap/sys/run/lnk
+export PIDFILE=/var/vcap/sys/run/lnk/lnk.pid
 
-  mkdir -p "${log_dir}"
+function main() {
+  mkdir -p "${LOG_DIR}"
+  mkdir -p "${RUN_DIR}"
 
   case "${1}" in
     "start")
+
+      echo $$ > $PIDFILE
+
       <% lnkers = link('lnkers') %>
 
       <% lnkers.instances.each do |instance| %>
-        echo <%= instance.index+1 %>=<%= instance.address %>:<%= lnkers.p('material') %> > "${log_dir}/ctl.log"
+        echo <%= instance.index+1 %>=<%= instance.address %>:<%= lnkers.p('material') %> >> "${LOG_DIR}/ctl.log"
       <% end %>
+
+      exec chpst -u vcap:vcap sleep 10s
       ;;
 
     "stop")
+      if [ -f $PIDFILE ]; then
+        kill -9 `cat $PIDFILE` || true
+        rm -f $PIDFILE
+      fi
       ;;
 
     *)
