@@ -4,7 +4,7 @@ name: lnk
 releases:
 - name: lnk
   version: latest
-  url: git+https://github.com/genevieve/lnk-bosh-release
+  # url: git+https://github.com/genevieve/lnk-bosh-release
 
 stemcells:
 - alias: default
@@ -13,7 +13,7 @@ stemcells:
 
 update:
   canaries: 2
-  max_in_flight: 1
+  max_in_flight: 3
   canary_watch_time: 5000-60000
   update_watch_time: 5000-60000
 
@@ -26,6 +26,5 @@ instance_groups:
     release: lnk
   vm_type: default
   stemcell: default
-  persistent_disk: 10240
   networks:
   - name: default
