@@ -1,0 +1,5 @@
+check process lnk
+  with pidfile /var/vcap/sys/run/lnk/lnk.pid
+  start program "/var/vcap/jobs/lnk/bin/ctl start" with timeout 60 seconds
+  stop program "/var/vcap/jobs/lnk/bin/ctl stop"
+  group vcap
