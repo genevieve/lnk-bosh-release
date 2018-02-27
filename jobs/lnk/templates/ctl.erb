@@ -13,11 +13,7 @@ function main() {
 
       echo $$ > $PIDFILE
 
-      <% lnkers = link('lnkers') %>
-
-      <% lnkers.instances.each do |instance| %>
-        echo <%= instance.index+1 %>=<%= instance.address %>:<%= lnkers.p('material') %> >> "${LOG_DIR}/ctl.log"
-      <% end %>
+      echo <%= link('lnkers').p('material') %> >> "${LOG_DIR}/ctl.log"
 
       exec chpst -u vcap:vcap sleep 10s
       ;;

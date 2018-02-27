@@ -18,7 +18,7 @@ update:
 
 instance_groups:
 - name: lnk
-  azs: []
+  azs: [z1]
   instances: 0
   jobs:
   - name: lnk

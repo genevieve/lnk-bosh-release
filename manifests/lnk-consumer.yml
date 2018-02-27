@@ -28,7 +28,7 @@ instance_groups:
         from: zero_instance_link
         deployment: lnk
     properties:
-      materia: steel
+      material: steel
   vm_type: default
   stemcell: default
   networks:
