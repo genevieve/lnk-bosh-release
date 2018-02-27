@@ -1,5 +1,5 @@
 ---
-name: lnk
+name: lnk-consumer
 
 releases:
 - name: lnk
@@ -18,17 +18,17 @@ update:
 
 instance_groups:
 - name: lnk
-  azs: []
-  instances: 0
+  azs: [z1]
+  instances: 1
   jobs:
   - name: lnk
     release: lnk
-    provides:
+    consumes:
       lnkers:
-        as: zero_instance_link
-        shared: true
+        from: zero_instance_link
+        deployment: lnk
     properties:
-      material: not-steel
+      materia: steel
   vm_type: default
   stemcell: default
   networks:
