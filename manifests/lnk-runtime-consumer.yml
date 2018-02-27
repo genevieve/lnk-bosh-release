@@ -1,0 +1,27 @@
+---
+name: lnk-runtime-consumer
+
+releases:
+- name: lnk
+  version: latest
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+update:
+  canaries: 2
+  max_in_flight: 3
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+
+instance_groups:
+- name: lnk
+  azs: [z1]
+  instances: 1
+  jobs: []
+  vm_type: default
+  stemcell: default
+  networks:
+  - name: default

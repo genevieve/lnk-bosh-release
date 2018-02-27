@@ -1,0 +1,15 @@
+releases:
+- name: lnk
+  version: "0+dev.13"
+
+addons:
+- name: lnk
+  jobs:
+  - name: lnk
+    release: lnk
+    provides:
+      lnkers:
+        shared: true
+        as: runtime_link
+    properties:
+      material: more-than-steel
