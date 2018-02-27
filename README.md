@@ -36,6 +36,8 @@ can be consumed.
 Note: this requires a specific version of the release
 due to this related [issue](https://github.com/cloudfoundry/bosh-cli/issues/57).
 
+Provide the version with `bosh update-runtime-config -v lnk_version=VERSION`.
+
 ### manifests/lnk-runtime-consumer.yml
 
 This is the consumer deployment compatible with the above

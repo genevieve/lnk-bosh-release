@@ -1,6 +1,6 @@
 releases:
 - name: lnk
-  version: "0+dev.13"
+  version: ((lnk_version))
 
 addons:
 - name: lnk
